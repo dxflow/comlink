@@ -18,9 +18,10 @@ export const proxyValueSymbol = Symbol("comlinkProxyValue");
  * Returns true if the given value has the proxy value symbol added to it.
  */
 const isProxyValue = (value) => !!value && value[proxyValueSymbol] === true;
+const globalObject = typeof self !== "undefined" ? self : global;
 const TRANSFERABLE_TYPES = ["ArrayBuffer", "MessagePort", "OffscreenCanvas"]
-    .filter(f => f in self)
-    .map(f => self[f]);
+    .filter(f => f in globalObject)
+    .map(f => globalObject[f]);
 const uid = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
 const throwSymbol = Symbol("throw");
 const proxyTransferHandler = {

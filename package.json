@@ -1,6 +1,6 @@
 {
-  "name": "comlinkjs",
-  "version": "3.1.1",
+  "name": "@dxflow/comlinkjs",
+  "version": "3.1.2",
   "description": "",
   "main": "comlink.js",
   "module": "comlink.js",
@@ -13,7 +13,7 @@
     "watchtest": "karma start --no-single-run --browsers ChromeHeadless",
     "watchtestharmony": "karma start --no-single-run --browsers ChromeCanaryHeadlessHarmony",
     "version": "sed -i.bak -e 's!comlinkjs@[0-9.]*!comlinkjs@'${npm_package_version}'!' README.md && git add README.md",
-    "mypublish": "npm run build && npm run test && cp README.md package.json dist && npm publish dist",
+    "mypublish": "npm run build && npm run test && cp README.md package.json dist && npm publish dist --access public",
     "build": "rm -rf dist && mkdir dist && npm run compile",
     "compile": "tsc --outDir dist && tsc -m umd --outDir dist/umd && node ./mangle_umd.js"
   },

@@ -177,9 +177,12 @@ export interface TransferHandler {
   deserialize: (obj: {}) => {};
 }
 
+declare var global: any;
+
+const globalObject = typeof self !== "undefined" ? self : global;
 const TRANSFERABLE_TYPES = ["ArrayBuffer", "MessagePort", "OffscreenCanvas"]
-  .filter(f => f in self)
-  .map(f => (self as any)[f]);
+  .filter(f => f in globalObject)
+  .map(f => (globalObject as any)[f]);
 const uid: number = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
 
 const throwSymbol = Symbol("throw");
